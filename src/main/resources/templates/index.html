@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="utf-8"/> 
+	<meta http-equiv="Content-Type" content="text/html"/>
+	<title>Spring Boot Journal</title>
+
+  	<link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> </link>
+	<link rel="stylesheet" type="text/css" media="all" href="css/bootstrap-glyphicons.css"></link>
+	<link rel="stylesheet" type="text/css" media="all" href="css/styles.css"></link> 
+
+<!-- 
+	<link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-glyphicons.css"/>
+	<link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/styles.css"/> 
+ -->
+
+
+</head>
+
+<body>
+	<div class = "container">
+		<h1> 11번가 DB </h1>
+
+<!-- 		
+		<p sec:authorize="isAuthenticated()">
+			<form th:action="@{/logout}" method="post">
+				<input type = "submit" value="로그아웃"/>
+			</form>
+		</p>
+ -->
+ 
+		<ul class="timeline">
+		
+		<!-- From Here... The garbled Code 
+			<form th:action="@{/product_new}" method="post" th:object="${product}">
+				  <div class="product-list single">
+				    <label for="productName">Name:</label>
+				    <input type="text" id="productName" required="true" th:placeholder="*{productName}" th:value="*{productName}" th:field="*{productName}"/>
+				    <label for="description">Description:</label>
+				    <textarea rows="5" id="description" type="text"  required="true" th:placeholder="*{description}" th:value="*{description}" th:field="*{description}"/>
+				
+					<div class="actions">
+					    <button type="submit" class="button">Save</button>
+					    <a th:href="@{/}" class="button button-secondary">Cancel</a>
+				    </div>
+				</div>
+				</form>
+		<!- Bt here... The garbled Code  -->
+		
+		
+				
+			<div th:each= "entry,status: ${product}">
+				<li th:attr="class=${status.odd}?'timeline-inverted':''">
+					<div class="tl-circ"></div>
+					<div class="timeline-panel">
+						<div class="tl-heading">
+							<h4><span th:text="${entry.productName}">제품명</span></h4>
+							<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i></small></p>	
+						</div>
+						
+						<div class="tl-body">
+						
+							<p><span th:text="${entry.sellerNick}">셀러 닉네임</span></p>
+							<p><span th:text="${entry.productPrice}">가격</span></p>
+							<p><span th:text="${entry.detailPageUrl}">URL</span></p>
+							
+						</div>
+					</div>
+				</li>
+				
+			</div>
+		</ul>
+	</div>
+	
+</body>
+</html>
